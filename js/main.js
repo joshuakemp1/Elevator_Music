@@ -1,13 +1,18 @@
 var app = angular.module('ElevatorMusic', []);
 
 app.run(function($rootScope) {
-  $rootScope.name = "Ari Lerner";
+  $rootScope.name = "Josh Kemp";
 });
 
 app.controller('MyController', function($scope) {
-  $scope.person = {
-    name: "Ari Lerner"
+  $scope.person = { name: "Josh Kemp" };
+  var updateClock = function() {
+    $scope.clock = new Date();
   };
+  var timer = setInterval(function() {
+    $scope.$apply(updateClock);
+  }, 1000);
+  updateClock();
 });
 
 app.controller('PlayerController', ['$scope', function($scope) {
@@ -29,6 +34,11 @@ app.controller('PlayerController', ['$scope', function($scope) {
   });
 }]);
 
+app.controller('DemoController', ['$scope', function ($scope) {
+  $scope.counter = 0;
+  $scope.add = function(amount) { $scope.counter += amount; };
+  $scope.subtract = function(amount) { $scope.counter -= amount; };
+}]);
 
 app.controller('RelatedController', ['$scope', function($scope) {
 }]);
