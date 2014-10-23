@@ -10,19 +10,6 @@ app.controller('MyController', function($scope) {
   };
 });
 
-
-// app.controller('PlayerController', ['$scope', function($scope) {
-//   $scope.playing = false;
-//   $scope.audio = document.createElement('audio');
-//   $scope.audio.src = 'http://download.wavetlan.com/SVV/Media/HTTP/BlackBerry.mp4';
-
-// }]);
-
-
-
-// app.controller('RelatedController', ['$scope', function($scope) {
-// }]);
-
 app.controller('PlayerController', ['$scope', function($scope) {
   $scope.playing = false;
   $scope.audio = document.createElement('audio');
@@ -40,4 +27,8 @@ app.controller('PlayerController', ['$scope', function($scope) {
       $scope.stop();
     });
   });
+}]);
+
+
+app.controller('RelatedController', ['$scope', function($scope) {
 }]);
