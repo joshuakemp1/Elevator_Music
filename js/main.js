@@ -15,7 +15,18 @@ app.controller('MyController', function($scope) {
   updateClock();
 });
 
-app.controller('PlayerController', ['$scope', function($scope) {
+var apiKey = 'MDE3MjE3NTI4MDE0MTQ0NDIyNDhmNjg0Nw001',
+    nprUrl = 'http://api.npr.org/query?id=61&fields=relatedLink,title,byline,text,audio,image,pullQuote,all&output=JSON';
+
+
+app.controller('PlayerController', ['$scope', function($scope, $http) {
+  $http({
+    method: 'JSONP',
+    url: nprUrl + '&apiKey=' + apiKey + '&callback=JSON_CALLBACK'
+  }).success(function(data, status) {
+  }).error(function(data, status) {
+    //Some error occured
+  });
   $scope.playing = false;
   $scope.audio = document.createElement('audio');
   $scope.audio.src = 'http://download.wavetlan.com/SVV/Media/HTTP/BlackBerry.mp4';
